@@ -22,10 +22,18 @@ laravel+mysql+php+bootstrap+require.js+阿里云oss+阿里云sms+axios+vuejs+vue
 2、(config/app)Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 3、php artisan ide-helper:generate
 ```
-###时间问题修改
+### 时间问题修改
 ```
 1、config/app.php 'timezone' => 'UTC'为PRC
 ```
+## 创建模型同时创建数据迁移文件
+````
+1、php artisan make:model Model/Admin -m
+2、添加字段迁移文件database/migrations/
+3、php artisan migrate
+4、php artisan tinker生成测试数据
+5、factory(App\Model\Admin::class,3)->create();
+````
 #安装插件
 composer require barryvdh/laravel-ide-helper
 
