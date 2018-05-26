@@ -1,60 +1,83 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Laravel&VueJs 开发移动与桌面平台视频播放项目
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+> 希望大家为本项目加个 Star，给我们提供继续坚持录制高质量视频的动力。
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## 开发环境
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 开发工具
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+mac+phpstorm+sequelPro
 
-## Learning Laravel
+### 程序语言
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+laravel+mysql+php+bootstrap+require.js+阿里云oss+阿里云sms+axios+vuejs+vuex...
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## 插件
 
-## Laravel Sponsors
+### ideHelper
+```
+是一个帮助提高laravel代码提示功能的插件github
+1、composer require barryvdh/laravel-ide-helper
+2、(config/app)Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+3、php artisan ide-helper:generate
+```
+###时间问题修改
+```
+1、config/app.php 'timezone' => 'UTC'为PRC
+```
+#安装插件
+composer require barryvdh/laravel-ide-helper
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+#在 config/app.php 文件中的providers 配置段中添加以下
+Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
+#生成辅助文件
+php artisan ide-helper:generate
+```
+### laracasts/flash
+laracasts/flash用于控制消息显示处理
 
-## Contributing
+```
+#安装
+composer require laracasts/flash
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#在 config/app.php 文件中的providers 配置段中添加以下
+'providers' => [
+    Laracasts\Flash\FlashServiceProvider::class,
+];
 
-## Security Vulnerabilities
+#生成模板
+php artisan vendor:publish --provider="Laracasts\Flash\FlashServiceProvider"
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### 模板中定义
 
-## License
+```
+ @include('flash::message')
+ <script>
+     $('#flash-overlay-modal').modal();
+ </script>
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 解决mysql5.7以下出错的问题
+
+在 app\Providers\AppServiceProvider.php 文件里的 boot 方法里设置一个默认值
+
+```
+public function boot(){
+ Schema::defaultStringLength(191);
+}
+```
+
+## 解决ajax跨域访问
+
+默认情况下前台发送Ajax是允许跨域请求的。我们可以在后台进行相关设置然后允许前台跨域请求。
+
+允许单个域名访问 header('Access-Control-Allow-Origin:http://www.houdunwang.com');
+
+允许多个域名
+$origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : ''; $allow_origin = array( 	'http://www.houdunren.com', 	'http://www.houdunwang.com' ); if(in_array($origin, $allow_origin)){ 	header('Access-Control-Allow-Origin:'.$origin); }
+
+允许所有域名请求
+header('Access-Control-Allow-Origin:*');
