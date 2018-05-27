@@ -1,0 +1,104 @@
+body {
+    background: #f2f2f2;
+    margin-bottom: 40px;
+}
+
+.content {
+    margin-top: 70px;
+}
+
+.form {
+    margin-top: 70px;
+    max-width: 400px;
+}
+
+.form h1 {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background: #e2e2e2;
+}
+
+.jumbotron h1 {
+    font-family: 新宋体;
+    font-weight: bold;
+    text-shadow: 5px 5px 5px #FF0000;
+}
+
+.jumbotron p {
+    text-indent: 2em;
+    font-style: italic;
+}
+
+.breadcrumb {
+    background: #ffffff;
+}
+
+.breadcrumb a {
+    font-weight: bold;
+}
+
+.description {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.course-list-item {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+}
+
+.course-list-item .course-title {
+    display: block;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #222222;
+    padding: 10px 10px;
+}
+
+.course-list-item .course-title:hover {
+    text-decoration: none;
+    color: #478cff;
+}
+
+.course-list-item .course-info {
+    padding-left: 15px;
+    padding-bottom: 10px;
+    color: #777777;
+}
+
+.blog, .video, .blog-common, .video-common {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
+
+.blog-common-info, .video-common-info {
+    font-weight: bold;
+}
+
+.blog-common-content, .video-common-content {
+    padding-left: 10px;
+}
+
+.blog .blog-title, .video .video-title {
+    font-weight: bold;
+}
+
+.blog-info, .video-info {
+    color: #777777;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #e2e2e2;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bolder;
+}
